@@ -9,7 +9,7 @@ with open('items.json', 'r') as f:
     start = itemcodes().index(data[0]["ItemCode"])
     f.close()
     
-for itemcode in itemcodes()[start:]:
+for itemcode in itemcodes()[start:]:#[itemcodes().index("JUN100311"):]:
     if(validurl(itemcode) != None):
         item = CatalogItem(validurl(itemcode))
         if(item.iscomic()):
