@@ -1,10 +1,10 @@
 def itemcodes():
     itemcodes = []
     months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-    years = range(10, 17)
+    years = range(16, 17)
 
     for year in years:
-        for month in months:
+        for month in months[9:10]:
             for i in range(4000):
                 if(i >=0 and i <10):
                     itemcodes.append(month + str(year) + "000" + str(i))

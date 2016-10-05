@@ -6,7 +6,7 @@ import json
 
 with open('items.json', 'r') as f:
     data = json.load(f)
-    start = itemcodes().index(data[0]["ItemCode"])
+    start = itemcodes().index(data["items"][0]["ItemCode"])
     f.close()
     
 for itemcode in itemcodes()[start:]:#[itemcodes().index("JUN100311"):]:
