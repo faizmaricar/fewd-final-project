@@ -11,11 +11,11 @@ $(document).ready(
         });
     
         function displayItems(data){
-            
             var items = data.items;
             var $carousel = $("#owl-example");
             
             loadForm(items)
+            
             items.forEach(
                 function(item, index){
                     var $row = $("<div></div>");
@@ -59,12 +59,10 @@ $(document).ready(
                     
                 });
         }
+        
         function loadForm(data){
             var publishers = [""];
             var srp = [""];
-            var day = [""];
-            var month = [""];
-            var year = [""];
             
             var $publishers = $("#publisher");
             var $srp = $("#srp");
@@ -96,6 +94,7 @@ $(document).ready(
                     $srp.append($price);
                 }
             );
+            $("#totalItems").text(data.length);
         }
         $(".next").click(function(){
             owl.trigger('owl.next');
@@ -105,5 +104,3 @@ $(document).ready(
         })
     }
 );  
-
-
