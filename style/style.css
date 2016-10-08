@@ -4,3 +4,10 @@ body{
 p{
     text-align: justify;
 }
+.hide{
+    display: none;
+}
+
+#items-carousel .item{
+    border: 1px solid black;
+}

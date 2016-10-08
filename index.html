@@ -7,12 +7,12 @@
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="style/style.css">
-        <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
-        <link rel="stylesheet" href="owl-carousel/owl.theme.css">
+        <link rel="stylesheet" type="text/css" href="/script/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="/script/slick/slick-theme.css"/>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="/script/owl-carousel/owl.carousel.js"></script>
+        <script src="script/slick/slick.js"></script>
         <script src="script/script.js"></script>
     </head>
     <body>
@@ -34,7 +34,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a  class ="next" role="button" data-slide="next">Next
+                                    <a class ="next" role="button" data-slide="next">Next
                                         <span class="glyphicon glyphicon-chevron-right"></span>
                                     </a>
                                 </li>
@@ -46,7 +46,7 @@
                     </div>
             </header>
             <main>
-                <div id="owl-example" class="owl-carousel col-sm-12"></div>
+                <div class="carousel col-sm-12"></div>
             </main>
             <aside id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
@@ -58,16 +58,8 @@
                         <div class="modal-body">
                             <form>
                                 <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" class="form-control" id="title">
-                                </div>
-                                <div class="form-group">
                                     <label for="publisher">Publisher</label>
                                     <select class="form-control" id="publisher"></select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="srp">Price</label>
-                                    <select class="form-control" id="srp"></select>
                                 </div>
                             </form>
                             <button class="btn btn-default" id="filter">Filter</button>
