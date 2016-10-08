@@ -9,12 +9,9 @@ $(document).ready(
             jsonPath: "script/items.json",
             jsonSuccess: displayItems
         });
-    
-        function displayItems(data){
-            var items = data.items;
+        function displayItems(items){
+            loadForm(items);
             var $carousel = $("#owl-example");
-            
-            loadForm(items)
             
             items.forEach(
                 function(item, index){
@@ -44,7 +41,6 @@ $(document).ready(
                     
                     $section.append($img);
                     
-                    //$article.append($hgroup);
                     $article.append($itemcode);
                     $article.append($creators);
                     $article.append($synopsis);
@@ -56,18 +52,18 @@ $(document).ready(
                     $row.append($article);
             
                     $carousel.append($row);
-                    
+                    $("#totalItems").text(items.length);
                 });
         }
         
-        function loadForm(data){
+        function loadForm(items){
             var publishers = [""];
             var srp = [""];
             
             var $publishers = $("#publisher");
             var $srp = $("#srp");
             
-            data.forEach(
+            items.forEach(
                 function(item, index){
                     if(!publishers.includes(item.Publisher.trim())){
                         publishers.push(item.Publisher.trim());   
@@ -94,7 +90,6 @@ $(document).ready(
                     $srp.append($price);
                 }
             );
-            $("#totalItems").text(data.length);
         }
         $(".next").click(function(){
             owl.trigger('owl.next');
@@ -103,4 +98,4 @@ $(document).ready(
             owl.trigger('owl.prev');
         })
     }
-);  
+);
