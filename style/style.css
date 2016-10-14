@@ -2,6 +2,9 @@ body{
     background-color: #531D8C;
     color: white;
 }
+aside{
+    color: #333;
+}
 p{
     text-align: justify;
 }
