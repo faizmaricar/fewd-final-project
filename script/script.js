@@ -1,6 +1,5 @@
 $(document).ready(
     function(){
-        
         var next = $(".next");
         var prev = $(".prev");
         var filter = $("#filter");
@@ -56,6 +55,7 @@ $(document).ready(
                     $hgroup.append($title);
                     $hgroup.append($publisher);
                     
+                    //$section.append("<div class='loader'></div>");
                     $section.append($img);
                     
                     $article.append($itemcode);
@@ -120,8 +120,17 @@ $(document).ready(
                     $(".carousel").slick('slickFilter', '.' + $("#publisher").val());
                     console.log($(".carousel div").length);
                     toastr["info"]($(".carousel div").length + " items shown");
-                }
-                
+                } 
+            }
+        );
+        $(document).ajaxStart(
+            function(){
+                $(".loader").css("display", "block");
+            }
+        );
+        $(document).ajaxComplete(
+            function(){
+                $(".loader").css("display", "none");
             }
         );
     }
