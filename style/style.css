@@ -1,13 +1,16 @@
 body{
-    background-color: #8FB299;
+    background-color: #531D8C;
+    color: white;
 }
 p{
     text-align: justify;
 }
-.hide{
-    display: none;
-}
 
-#items-carousel .item{
-    border: 1px solid black;
+.navbar-inverse{
+    background-color: #260D40;
+    border-bottom: #260D40;
+    color: white;
+}
+aside{
+    color: #333;
 }

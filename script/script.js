@@ -1,5 +1,6 @@
 $(document).ready(
     function(){
+        
         var next = $(".next");
         var prev = $(".prev");
         var filter = $("#filter");
@@ -8,17 +9,34 @@ $(document).ready(
             url: "script/items.json",
             dataType: "json",
             type: "get",
-            cache: false,
+            cache: true,
             success: displayItems
         };
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
         $.ajax(ajaxOptions);
-        
         function displayItems(items){
             loadForm(items);
             var $carousel = $(".carousel");
             items.forEach(
                 function(item, index){
                     var $row = $("<div></div>");
+                    $row.addClass("media");
                     $row.addClass("item");
                     $row.addClass(item.Publisher.trim().split(" ").join(""));
                     var $hgroup = $("<hgroup></hgroup>").attr("class", "col-sm-12");
@@ -28,9 +46,8 @@ $(document).ready(
                     var $title = $("<h1></h1>").html("<strong>" + item.Title + "</strong>")
                     var $publisher = $("<h2></h2>").html("<strong>" + item.Publisher + "</strong>")
                     
-                    var $img = $("<img>").attr({src: item.mainContentImage, alt: "Item Image", class: "img-responsive"});
+                    var $img = $("<img>").attr({"data-lazy": item.mainContentImage, alt: "Item Image", class: "img-responsive"});
                     var $itemcode = $("<h3></h3>").html("<strong>" + item.ItemCode + "</strong>").attr("class", "col-sm-12");
-                    
                     var $creators = $("<p></p>").html("<strong>" + item.Creators + "</strong>").attr("class", "col-sm-12");
                     var $synopsis = $("<p></p>").html(item.Text).attr("class", "col-sm-12");
                     var $releasedate = $("<h3></h3>").html("<strong>" + item.ReleaseDate + "</strong>").attr("class", "col-sm-12 ");
@@ -52,9 +69,13 @@ $(document).ready(
                     $row.append($article);
             
                     $carousel.append($row);
-                    $("#totalItems").text(items.length);
                 });
-            $(".carousel").slick({arrows: false});
+            $(".carousel").slick({
+                arrows: false,
+                lazyLoad: "ondemand"
+            });
+            console.log($(".carousel div").length);
+            toastr["info"]($(".carousel div").length + " items shown");
         }
         
         function loadForm(items){
@@ -91,10 +112,14 @@ $(document).ready(
             function(){
                 if($("#publisher").val() === ""){
                     $(".carousel").slick('slickUnfilter');
+                    console.log($(".carousel div").length);
+                    toastr["info"]($(".carousel div").length + " items shown");
                 }
                 else{
                     $(".carousel").slick('slickUnfilter');
                     $(".carousel").slick('slickFilter', '.' + $("#publisher").val());
+                    console.log($(".carousel div").length);
+                    toastr["info"]($(".carousel div").length + " items shown");
                 }
                 
             }
